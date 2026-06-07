@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH Kopitiam — Halal Malay Restaurant Miri</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#FFFFFF;
+  --cream:#FAF9F4;
+  --offwhite:#F4F1E8;
+  --green:#1A5C38;
+  --green-dark:#134428;
+  --green-light:#2A7A4B;
+  --green-pale:#EBF3EE;
+  --gold:#C9973A;
+  --gold-light:#E0B555;
+  --gold-pale:#FDF6E7;
+  --text:#1A1A1A;
+  --muted:#666666;
+  --border:rgba(26,92,56,0.12);
+  --border-gold:rgba(201,151,58,0.2);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 52px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--green);letter-spacing:.06em}
+.nav-logo-sub{font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:2px}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-halal{display:flex;align-items:center;gap:8px}
+.halal-badge{background:var(--green);color:var(--white);font-size:10px;font-weight:600;letter-spacing:.1em;padding:5px 12px;text-transform:uppercase}
+.nav-cta{background:var(--green);color:var(--white);padding:10px 22px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;margin-left:8px}
+.nav-cta:hover{background:var(--green-dark)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--green-dark)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;opacity:.2}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(19,68,40,.97) 42%,rgba(26,92,56,.7) 100%)}
+.hero-content{position:relative;z-index:2;padding:140px 52px 80px;max-width:700px}
+.hero-halal{display:inline-flex;align-items:center;gap:10px;background:rgba(201,151,58,0.15);border:1px solid rgba(201,151,58,0.35);padding:8px 16px;margin-bottom:28px}
+.hero-halal-icon{font-size:14px}
+.hero-halal-text{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.hero-tag{display:flex;align-items:center;gap:12px;font-size:10px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(201,151,58,.7);margin-bottom:20px}
+.hero-tag::before{content:'';width:36px;height:1px;background:var(--gold);opacity:.6}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:74px;font-weight:300;line-height:1.04;color:var(--white);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:44px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:var(--white);padding:16px 38px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.btn-gold:hover{background:var(--gold-light);color:var(--text)}
+.btn-white{background:var(--white);color:var(--green);padding:16px 38px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.btn-white:hover{background:var(--offwhite)}
+.btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--white);padding:16px 38px;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:0;margin-top:56px;padding-top:44px;border-top:1px solid rgba(201,151,58,.2);flex-wrap:wrap}
+.hero-stat{padding-right:40px;margin-right:40px;border-right:1px solid rgba(255,255,255,.1)}
+.hero-stat:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--gold);line-height:1}
+.stat-label{font-size:10px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:4px}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--gold);padding:13px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marquee 26s linear infinite}
+.marquee-track span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9);margin:0 32px}
+.marquee-track span.dot{color:rgba(255,255,255,.35);margin:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── ABOUT ── */
+.about{padding:120px 52px;display:flex;gap:80px;align-items:center;max-width:1200px;margin:0 auto}
+.about-imgs{flex:0 0 460px;position:relative;height:560px}
+.about-img-main{position:absolute;top:0;left:0;width:320px;height:420px;object-fit:cover}
+.about-img-accent{position:absolute;bottom:0;right:0;width:230px;height:290px;object-fit:cover;border:6px solid var(--white)}
+.about-badge{position:absolute;top:180px;right:0;background:var(--green);color:var(--white);padding:22px 20px;text-align:center;min-width:120px;z-index:2}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;line-height:1;color:var(--gold)}
+.badge-txt{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-top:3px;opacity:.85}
+.about-text{flex:1}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--green)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.1;color:var(--text);margin-bottom:22px}
+.sec-title em{font-style:italic;color:var(--green)}
+.about-text p{font-size:14px;font-weight:300;color:var(--muted);line-height:1.95;margin-bottom:14px}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pill{padding:8px 18px;border:1px solid var(--border);font-size:11px;font-weight:500;color:var(--green);background:var(--green-pale);letter-spacing:.04em}
+.pill.gold{color:var(--gold);background:var(--gold-pale);border-color:var(--border-gold)}
+
+/* ── MENU ── */
+.menu{background:var(--green);padding:120px 52px}
+.menu-inner{max-width:1200px;margin:0 auto}
+.menu .eyebrow{color:rgba(255,255,255,.5)}
+.menu .eyebrow::before{background:rgba(255,255,255,.3)}
+.menu .sec-title{color:var(--white)}
+.menu .sec-title em{color:var(--gold)}
+.menu-tabs{display:flex;gap:2px;margin-top:48px;margin-bottom:3px;flex-wrap:wrap}
+.tab-btn{padding:12px 28px;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s}
+.tab-btn.active{background:var(--gold);color:var(--white)}
+.tab-btn:hover:not(.active){background:rgba(255,255,255,.1);color:var(--white)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px}
+.menu-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);padding:32px 28px;transition:background .25s,transform .25s;position:relative;overflow:hidden}
+.menu-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.menu-card:hover::after{transform:scaleX(1)}
+.menu-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+.menu-icon{font-size:26px;margin-bottom:16px;display:block}
+.menu-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--white);margin-bottom:8px}
+.menu-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.52);line-height:1.75;margin-bottom:16px}
+.menu-price{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.06em}
+.menu-tag{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,151,58,.3);padding:4px 10px;margin-top:10px}
+.menu-tag.sig{background:var(--gold);color:var(--white);border:none}
+
+/* ── DRINKS ── */
+.drinks{padding:120px 52px;background:var(--cream)}
+.drinks-inner{max-width:1200px;margin:0 auto}
+.drinks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.drink-card{background:var(--white);border:1px solid var(--border);padding:36px 28px;text-align:center;transition:border-color .25s,transform .25s}
+.drink-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.drink-icon{font-size:34px;margin-bottom:14px}
+.drink-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--text);margin-bottom:8px}
+.drink-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.75}
+
+/* ── FEATURES ── */
+.features{padding:120px 52px;background:var(--green-pale)}
+.features-inner{max-width:1200px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+.feat-card{background:var(--white);border:1px solid var(--border);padding:44px 28px;text-align:center;transition:border-color .25s,transform .25s}
+.feat-card:hover{border-color:var(--green);transform:translateY(-4px)}
+.feat-icon{font-size:30px;margin-bottom:16px}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:10px}
+.feat-desc{font-size:12px;font-weight:300;color:var(--muted);line-height:1.75}
+
+/* ── GALLERY ── */
+.gallery{padding:120px 52px;background:var(--white)}
+.gallery-inner{max-width:1200px;margin:0 auto}
+.gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:4px;margin-top:60px}
+.gallery-item{overflow:hidden;position:relative}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item:first-child{grid-row:span 2}
+.gallery-label{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(to top,rgba(19,68,40,.8),transparent);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9);opacity:0;transition:opacity .3s}
+.gallery-item:hover .gallery-label{opacity:1}
+
+/* ── TESTIMONIALS ── */
+.testi{padding:120px 52px;background:var(--offwhite)}
+.testi-inner{max-width:1200px;margin:0 auto}
+.testi-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:60px}
+.rating-badge{background:var(--green);color:var(--white);padding:24px 32px;text-align:center}
+.rating-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;line-height:1;color:var(--gold)}
+.rating-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin:6px 0}
+.rating-count{font-size:10px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testi-card{background:var(--white);border:1px solid var(--border);padding:40px 32px}
+.testi-q{font-family:'Cormorant Garamond',serif;font-size:60px;color:var(--green);opacity:.15;line-height:.8;margin-bottom:10px}
+.stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.testi-text{font-size:14px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:26px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:18px}
+.testi-av{width:40px;height:40px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--white);flex-shrink:0}
+.testi-name{font-size:13px;font-weight:500;color:var(--text)}
+.testi-loc{font-size:11px;color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact{background:var(--green-dark);padding:120px 52px}
+.contact-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact .eyebrow{color:rgba(255,255,255,.45)}
+.contact .eyebrow::before{background:rgba(255,255,255,.25)}
+.contact .sec-title{color:var(--white)}
+.contact .sec-title em{color:var(--gold)}
+.hours-table{width:100%;margin:28px 0;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid rgba(255,255,255,.08)}
+.hours-table td{padding:13px 0;font-size:13px;font-weight:300}
+.hours-table td:first-child{color:rgba(255,255,255,.45);width:120px}
+.hours-table td:last-child{color:var(--white);font-weight:500}
+.cinfo{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.65}
+.cinfo a{color:var(--gold);text-decoration:none}
+.cinfo a:hover{color:var(--gold-light)}
+.contact-btns{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.cbtn{display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s;font-family:'Jost',sans-serif;border:none;cursor:pointer}
+.cbtn-gold{background:var(--gold);color:var(--white)}
+.cbtn-gold:hover{background:var(--gold-light);color:var(--text)}
+.cbtn-wa{background:#25D366;color:#fff}
+.cbtn-wa:hover{background:#1ab555}
+.cbtn-outline{border:1px solid rgba(201,151,58,.3);color:var(--gold);background:transparent}
+.cbtn-outline:hover{background:var(--gold);color:var(--white)}
+.info-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:32px;margin-top:24px}
+.info-box h4{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--white);margin-bottom:12px}
+.info-box p{font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.75}
+.info-box .gold{color:var(--gold);font-weight:500}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--gold);padding:90px 52px;text-align:center}
+.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:58px;font-weight:300;color:var(--white);margin-bottom:14px}
+.cta-banner h2 em{font-style:italic;color:var(--green-dark)}
+.cta-banner p{font-size:14px;font-weight:400;color:rgba(255,255,255,.85);margin-bottom:36px}
+.cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-green{background:var(--green);color:var(--white);padding:16px 38px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.btn-green:hover{background:var(--green-dark)}
+.btn-wa-dark{background:var(--green-dark);color:var(--white);padding:16px 38px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.btn-wa-dark:hover{background:#0d2e1b}
+
+/* ── FOOTER ── */
+footer{background:var(--green-dark);padding:60px 52px 28px;border-top:1px solid rgba(201,151,58,.15)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--white)}
+.footer-sub{font-size:9px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.footer-tagline{font-size:12px;font-weight:300;color:rgba(255,255,255,.3);margin-top:10px;line-height:1.65}
+.footer-social{display:flex;gap:10px;margin-top:16px}
+.soc{width:34px;height:34px;border:1px solid rgba(201,151,58,.2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-decoration:none;transition:all .2s}
+.soc:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h4{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-col a,.footer-col p{display:block;font-size:12px;font-weight:300;color:rgba(255,255,255,.32);text-decoration:none;margin-bottom:10px;line-height:1.65;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+
+/* ── MOBILE STICKY ── */
+.sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;height:56px}
+.sticky-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.sticky-green{background:var(--green);color:var(--white)}
+.sticky-wa{background:#25D366;color:#fff}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero-content>*{opacity:0;animation:fadeUp .8s ease forwards}
+.hero-halal{animation-delay:.05s}.hero-tag{animation-delay:.15s}.hero h1{animation-delay:.28s}.hero-sub{animation-delay:.42s}.hero-btns{animation-delay:.56s}.hero-stats{animation-delay:.7s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:14px 20px}.nav-links{display:none}.nav-halal{display:none}
+  .hero-content{padding:110px 20px 60px}.hero h1{font-size:46px}
+  .hero-stats{gap:20px}
+  .about{flex-direction:column;padding:70px 20px;gap:40px}
+  .about-imgs{flex:none;width:100%;height:360px}
+  .about-img-main{width:240px;height:320px}
+  .about-img-accent{width:180px;height:230px}
+  .menu{padding:70px 20px}
+  .drinks{padding:70px 20px}.drinks-grid{grid-template-columns:1fr 1fr}
+  .features{padding:70px 20px}.features-grid{grid-template-columns:1fr 1fr}
+  .gallery{padding:70px 20px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+  .gallery-item:first-child{grid-row:span 1}
+  .testi{padding:70px 20px}.testi-grid{grid-template-columns:1fr}
+  .testi-header{flex-direction:column;align-items:flex-start}
+  .contact{padding:70px 20px}.contact-wrap{grid-template-columns:1fr;gap:48px}
+  .cta-banner{padding:70px 20px}.cta-banner h2{font-size:38px}
+  footer{padding:48px 20px 80px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .sticky-bar{display:flex}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-main">RH Kopitiam</span>
+    <span class="nav-logo-sub">Halal · Miri Times Square</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#drinks">Drinks</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Find Us</a></li>
+  </ul>
+  <div class="nav-halal">
+    <span class="halal-badge">✓ Halal Certified</span>
+    <a href="#contact" class="nav-cta">Visit Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-halal">
+      <span class="hero-halal-icon">☪️</span>
+      <span class="hero-halal-text">100% Halal Certified · Miri Times Square</span>
+    </div>
+    <div class="hero-tag">Authentic Malay & Malaysian Kopitiam</div>
+    <h1>Real food.<br><em>Real flavour.</em></h1>
+    <p class="hero-sub">From the rich depths of Sarawak Laksa to the comforting sweetness of Roti Kawin — RH Kopitiam brings authentic Malaysian taste to the heart of Miri Times Square.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-gold">🍜 View Our Menu</a>
+      <a href="#contact" class="btn-white">📍 Find Us</a>
+      <a href="#about" class="btn-ghost">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="stat-num">4.1★</div><div class="stat-label">Google Rating</div></div>
+      <div class="hero-stat"><div class="stat-num">251</div><div class="stat-label">Reviews</div></div>
+      <div class="hero-stat"><div class="stat-num">7AM</div><div class="stat-label">Open daily</div></div>
+      <div class="hero-stat"><div class="stat-num">Halal</div><div class="stat-label">Certified</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Sarawak Laksa</span><span class="dot">·</span>
+    <span>Nasi Lemak</span><span class="dot">·</span>
+    <span>Roti Kawin</span><span class="dot">·</span>
+    <span>Teh Tarik</span><span class="dot">·</span>
+    <span>Halal Certified</span><span class="dot">·</span>
+    <span>Miri Times Square</span><span class="dot">·</span>
+    <span>Open Daily 7AM</span><span class="dot">·</span>
+    <span>Sarawak Laksa</span><span class="dot">·</span>
+    <span>Nasi Lemak</span><span class="dot">·</span>
+    <span>Roti Kawin</span><span class="dot">·</span>
+    <span>Teh Tarik</span><span class="dot">·</span>
+    <span>Halal Certified</span><span class="dot">·</span>
+    <span>Miri Times Square</span><span class="dot">·</span>
+    <span>Open Daily 7AM</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-imgs">
+    <img class="about-img-main" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&auto=format&fit=crop&q=80" alt="RH Kopitiam interior">
+    <img class="about-img-accent" src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=500&auto=format&fit=crop&q=80" alt="Local food">
+    <div class="about-badge">
+      <div class="badge-num">4.1★</div>
+      <div class="badge-txt">251 Google<br>Reviews</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="eyebrow">Our story</div>
+    <h2 class="sec-title">Miri's favourite<br><em>kopitiam</em></h2>
+    <p>RH Kopitiam is where Miri comes to eat. Nestled inside Miri Times Square at Marina Parkcity, we serve authentic Malay and Malaysian favourites — from the aromatic depths of Sarawak Laksa to the comforting simplicity of Roti Kawin with a glass of pulled Teh Tarik.</p>
+    <p>We're open daily from 7AM — whether you're here for breakfast before work, a family lunch, or a satisfying dinner after a long day. Our generous portions and honest prices keep our regulars coming back every single day.</p>
+    <p>Fully halal-certified, wheelchair-friendly, and spacious enough for the whole family.</p>
+    <div class="about-pills">
+      <span class="pill gold">☪️ Halal Certified</span>
+      <span class="pill">Generous Portions</span>
+      <span class="pill">Family Friendly</span>
+      <span class="pill">Wheelchair Accessible</span>
+      <span class="pill">Open Daily 7AM–10PM</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="menu-inner">
+    <div class="eyebrow">What we serve</div>
+    <h2 class="sec-title">Authentic flavours,<br><em>generous portions</em></h2>
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="showTab('mains')">Mains</button>
+      <button class="tab-btn" onclick="showTab('noodles')">Noodles & Rice</button>
+      <button class="tab-btn" onclick="showTab('snacks')">Snacks & Sides</button>
+      <button class="tab-btn" onclick="showTab('thai')">Thai Selection</button>
+    </div>
+    <div id="tab-mains" class="menu-grid">
+      <div class="menu-card">
+        <span class="menu-icon">🍛</span>
+        <div class="menu-name">Nasi Lemak Ayam Goreng</div>
+        <div class="menu-desc">The Malaysian classic — fragrant coconut rice served with crispy fried chicken in the style of Ayam Penyet, sambal and sides.</div>
+        <div class="menu-price">From RM 12</div>
+        <span class="menu-tag sig">Crowd Favourite</span>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🍗</span>
+        <div class="menu-name">Ayam Panggang</div>
+        <div class="menu-desc">Grilled chicken with a crispy charred exterior and juicy, tender interior. A protein-packed, satisfying choice for any meal.</div>
+        <div class="menu-price">From RM 12</div>
+        <span class="menu-tag">Grilled & healthy</span>
+      </div>
+    </div>
+    <div id="tab-noodles" class="menu-grid" style="display:none">
+      <div class="menu-card">
+        <span class="menu-icon">🍜</span>
+        <div class="menu-name">Sarawak Laksa</div>
+        <div class="menu-desc">The pride of Sarawak — a rich, aromatic and spicy coconut broth with rice vermicelli, prawns and egg. A must-try.</div>
+        <div class="menu-price">From RM 12</div>
+        <span class="menu-tag sig">Sarawak Signature</span>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🌶️</span>
+        <div class="menu-name">Pattaya Laksa</div>
+        <div class="menu-desc">A popular variation of Sarawak Laksa praised for its rich, bold and deeply authentic flavour. A firm favourite with regulars.</div>
+        <div class="menu-price">From RM 12</div>
+        <span class="menu-tag sig">House Signature</span>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🍝</span>
+        <div class="menu-name">Spicy Oil Kuey Teow</div>
+        <div class="menu-desc">Flat rice noodles tossed in aromatic chilli oil — smoky, spicy and deeply satisfying. Perfect for those who love bold flavours.</div>
+        <div class="menu-price">From RM 12</div>
+        <span class="menu-tag">Spicy kick</span>
+      </div>
+    </div>
+    <div id="tab-snacks" class="menu-grid" style="display:none">
+      <div class="menu-card">
+        <span class="menu-icon">🍞</span>
+        <div class="menu-name">Roti Kawin</div>
+        <div class="menu-desc">Soft toasted bread spread with kaya and butter — a beloved Malaysian breakfast staple that pairs perfectly with our local coffee.</div>
+        <div class="menu-price">From RM 5</div>
+        <span class="menu-tag">Breakfast favourite</span>
+      </div>
+      <div class="menu-card">
+        <span class="menu-icon">🦑</span>
+        <div class="menu-name">Sotong Combo</div>
+        <div class="menu-desc">An off-menu gem — ask our friendly staff if it's available. Regulars swear by it. Limited availability so ask early!</div>
+        <div class="menu-price">Ask our team</div>
+        <span class="menu-tag sig">Off-menu special</span>
+      </div>
+    </div>
+    <div id="tab-thai" class="menu-grid" style="display:none">
+      <div class="menu-card">
+        <span class="menu-icon">🇹🇭</span>
+        <div class="menu-name">Thai Selection</div>
+        <div class="menu-desc">A rotating selection of authentic Thai dishes — bringing even more variety to your table. Ask our team for today's Thai specials.</div>
+        <div class="menu-price">From RM 12</div>
+        <span class="menu-tag">Daily specials</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section class="drinks" id="drinks">
+  <div class="drinks-inner">
+    <div class="eyebrow">In your cup</div>
+    <h2 class="sec-title">Drinks to <em>complete</em> the meal</h2>
+    <div class="drinks-grid">
+      <div class="drink-card">
+        <div class="drink-icon">🧋</div>
+        <div class="drink-name">Iced Teh Tarik</div>
+        <div class="drink-desc">Malaysia's iconic "pulled tea" — creamy, frothy and perfectly sweet. The essential companion to any kopitiam meal.</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon">☕</div>
+        <div class="drink-name">Kiasu Peng / Hor Ka Sai</div>
+        <div class="drink-desc">A house local coffee blend — bold, aromatic and deeply satisfying for any time of day.</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon">🍵</div>
+        <div class="drink-name">Green Milk Tea</div>
+        <div class="drink-desc">A creamy and refreshing green tea blend — light enough to complement even the richest laksa.</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon">🍫</div>
+        <div class="drink-name">Midnight Chocolate</div>
+        <div class="drink-desc">Rich, indulgent and deeply chocolatey — a sweet treat that doubles as dessert in a glass.</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon">💙</div>
+        <div class="drink-name">Blue Lagoon</div>
+        <div class="drink-desc">A vibrant, eye-catching and refreshingly sweet drink — a favourite with younger diners and families.</div>
+      </div>
+      <div class="drink-card">
+        <div class="drink-icon">🥤</div>
+        <div class="drink-name">More on the menu</div>
+        <div class="drink-desc">We have a full selection of hot and cold beverages — come in and ask our friendly team for today's drink specials.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <div class="eyebrow">Why RH Kopitiam</div>
+    <h2 class="sec-title">Good reasons to <em>visit</em> every day</h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">☪️</div>
+        <div class="feat-title">Halal certified</div>
+        <div class="feat-desc">Fully halal-certified — every dish is prepared to the highest halal standards so the whole family can dine with confidence.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🍽️</div>
+        <div class="feat-title">Generous portions</div>
+        <div class="feat-desc">Customers consistently praise the portion sizes — hearty, satisfying meals at prices that make sense for everyday dining.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👨‍👩‍👧‍👦</div>
+        <div class="feat-title">Family friendly</div>
+        <div class="feat-desc">Spacious, clean and welcoming — with a wheelchair-accessible layout that makes everyone feel at home.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌅</div>
+        <div class="feat-title">Open all day</div>
+        <div class="feat-desc">From 7AM to 10PM daily — whether it's breakfast, lunch, dinner or a late evening snack, we're here for you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="eyebrow">A taste of RH</div>
+    <h2 class="sec-title">Come hungry,<br>leave <em>happy</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=800&auto=format&fit=crop&q=80" alt="Malaysian food spread">
+        <div class="gallery-label">Authentic flavours</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&auto=format&fit=crop&q=80" alt="Kopitiam interior">
+        <div class="gallery-label">Cozy interior</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=500&auto=format&fit=crop&q=80" alt="Laksa">
+        <div class="gallery-label">Sarawak Laksa</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=500&auto=format&fit=crop&q=80" alt="Nasi lemak">
+        <div class="gallery-label">Nasi Lemak</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop&q=80" alt="Drinks">
+        <div class="gallery-label">Local drinks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonials">
+  <div class="testi-inner">
+    <div class="testi-header">
+      <div>
+        <div class="eyebrow">What people say</div>
+        <h2 class="sec-title">Loved by Miri,<br><em>every day</em></h2>
+      </div>
+      <div class="rating-badge">
+        <div class="rating-num">4.1</div>
+        <div class="rating-stars">★★★★</div>
+        <div class="rating-count">251 Google Reviews</div>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-q">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">The Sarawak Laksa here is the real deal — rich, aromatic and deeply satisfying. I come here every weekend after my workout and the portions are always generous. Best value laksa in Miri!</p>
+        <div class="testi-author">
+          <div class="testi-av">A</div>
+          <div><div class="testi-name">Ahmad Zulkifli</div><div class="testi-loc">Miri, Sarawak</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-q">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">Brought the whole family here and everyone was happy. The Roti Kawin with Teh Tarik is exactly what a proper kopitiam breakfast should taste like. Clean, spacious and the staff are so friendly.</p>
+        <div class="testi-author">
+          <div class="testi-av">N</div>
+          <div><div class="testi-name">Nora & Family</div><div class="testi-loc">Miri, Sarawak</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-q">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">The Pattaya Laksa is incredible — I didn't know I needed a variation of laksa until I tried this. The Midnight Chocolate drink is addictive too. RH Kopitiam has become my daily spot!</p>
+        <div class="testi-author">
+          <div class="testi-av">L</div>
+          <div><div class="testi-name">Lisa Chong</div><div class="testi-loc">Miri, Sarawak</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <div>
+      <div class="eyebrow">Find us</div>
+      <h2 class="sec-title">We're at<br><em>Miri Times Square</em></h2>
+      <table class="hours-table">
+        <tr><td>Daily</td><td>7:00 AM – 10:00 PM</td></tr>
+      </table>
+      <div class="cinfo">📍 <span>LOT AG-56, Block A,<br>Parkcity Times Square,<br>98000 Miri, Sarawak</span></div>
+      <div class="cinfo">🅿️ <span>Ample parking available at Times Square</span></div>
+      <div class="cinfo">♿ <span>Wheelchair accessible venue</span></div>
+      <div class="contact-btns">
+        <a href="https://wa.me/60" class="cbtn cbtn-wa" target="_blank">💬 WhatsApp Enquiry</a>
+        <a href="https://maps.google.com/?q=RH+Kopitiam+Miri+Times+Square" class="cbtn cbtn-gold" target="_blank">📍 Get Directions</a>
+        <a href="#menu" class="cbtn cbtn-outline">🍜 View Full Menu</a>
+      </div>
+      <div class="info-box">
+        <h4>Good to know 💡</h4>
+        <p>Peak hours can be busy — arrive early or be prepared to wait a little. It's worth it! Ask our staff about the <span class="gold">off-menu Sotong Combo</span> — a hidden gem our regulars love.</p>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow">Price guide</div>
+      <h2 class="sec-title" style="font-size:36px;margin-bottom:28px">Honest prices,<br><em>big portions</em></h2>
+      <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:32px">
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:14px;font-weight:400;color:var(--white)">Main dishes</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold)">From RM 12</span>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:14px;font-weight:400;color:var(--white)">Snacks & Roti</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold)">From RM 5</span>
+        </div>
+        <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:14px;font-weight:400;color:var(--white)">Beverages</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold)">From RM 4</span>
+        </div>
+        <div style="background:var(--gold);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:14px;font-weight:600;color:var(--white)">Full meal for 2</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--white)">~RM 35–50</span>
+        </div>
+      </div>
+      <div class="info-box">
+        <h4>Opening hours 🕐</h4>
+        <p>Open <span class="gold">every day</span> from <span class="gold">7:00 AM to 10:00 PM</span>. Walk-ins always welcome — no reservation needed. Perfect for breakfast, lunch or dinner!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Come for the laksa.<br><em>Stay for everything else.</em></h2>
+  <p>Open daily 7AM – 10PM · Halal Certified · Miri Times Square</p>
+  <div class="cta-btns">
+    <a href="https://maps.google.com/?q=RH+Kopitiam+Miri+Times+Square" class="btn-green" target="_blank">📍 Get Directions</a>
+    <a href="https://wa.me/60" class="btn-wa-dark" target="_blank">💬 WhatsApp Enquiry</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">RH Kopitiam</div>
+        <div class="footer-sub">Halal · Miri Times Square</div>
+        <div class="footer-tagline">Authentic Malay & Malaysian kopitiam<br>Open daily 7AM–10PM</div>
+        <div class="footer-social">
+          <a class="soc" href="https://wa.me/60" target="_blank">WA</a>
+          <a class="soc" href="https://maps.google.com/?q=RH+Kopitiam+Miri" target="_blank">📍</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Menu</h4>
+        <a href="#menu">Sarawak Laksa</a>
+        <a href="#menu">Nasi Lemak</a>
+        <a href="#menu">Roti Kawin</a>
+        <a href="#menu">Ayam Panggang</a>
+        <a href="#drinks">Local Drinks</a>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Find Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>LOT AG-56, Block A,<br>Parkcity Times Square,<br>98000 Miri, Sarawak</p>
+        <p>Daily · 7:00 AM – 10:00 PM</p>
+        <p style="color:var(--gold);font-weight:500">☪️ Halal Certified</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 RH Kopitiam Miri. All rights reserved.</span>
+      <span>Parkcity Times Square, Miri · Open Daily 7AM–10PM</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="sticky-bar">
+  <a href="https://maps.google.com/?q=RH+Kopitiam+Miri+Times+Square" class="sticky-green" target="_blank">📍 Get Directions</a>
+  <a href="https://wa.me/60" class="sticky-wa" target="_blank">💬 WhatsApp</a>
+</div>
+
+<script>
+function showTab(tab) {
+  ['mains','noodles','snacks','thai'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = t === tab ? 'grid' : 'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', ['mains','noodles','snacks','thai'][i] === tab);
+  });
+}
+</script>
+</body>
+</html>
